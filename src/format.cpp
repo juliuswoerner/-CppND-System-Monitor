@@ -18,6 +18,6 @@ string Format::ElapsedTime(long seconds[[maybe_unused]]) {
     seconds = seconds - hours * 3600;
     int minutes = seconds / 60;
     seconds = seconds - minutes * 60;
-    time = Format::ConvertToDoubleDigits(hours) + ";" + Format::ConvertToDoubleDigits(minutes) + ";" + Format::ConvertToDoubleDigits(seconds);
+    time = Format::ConvertToDoubleDigits(hours) + ":" + Format::ConvertToDoubleDigits(minutes) + ":" + Format::ConvertToDoubleDigits(seconds);
     return time; 
 }
