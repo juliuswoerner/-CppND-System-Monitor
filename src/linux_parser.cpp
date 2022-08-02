@@ -4,6 +4,9 @@
 #include <vector>
 
 #include "linux_parser.h"
+#include "system.h"
+#include "process.h"
+#include "processor.h"
 
 using std::stof;
 using std::string;
@@ -67,10 +70,20 @@ vector<int> LinuxParser::Pids() {
 }
 
 // TODO: Read and return the system memory utilization
-float LinuxParser::MemoryUtilization() { return 0.0; }
+float LinuxParser::MemoryUtilization() { 
+  System system;
+  float memory_utilization;
+  memory_utilization = system.MemoryUtilization();
+  return memory_utilization; 
+}
 
 // TODO: Read and return the system uptime
-long LinuxParser::UpTime() { return 0; }
+long LinuxParser::UpTime() {
+  System system;
+  long up_time;
+  up_time = system.UpTime(); 
+  return 0; 
+}
 
 // TODO: Read and return the number of jiffies for the system
 long LinuxParser::Jiffies() { return 0; }
