@@ -78,13 +78,13 @@ float LinuxParser::MemoryUtilization() {
     std::getline(stream, line);
     std::istringstream linestream(line);
     linestream >> attribute >> value;
-    if(attribute == "MemTotal"){
+    if(attribute == "MemTotal:"){
       max_memory = stof(value);
     }
-    if(attribute == "MemFree"){
+    else if(attribute == "MemFree:"){
       free_memory = stof(value);
     }
-    if(max_memory != 0.0 && free_memory != 0.0){ return 1.0 - (free_memory / max_memory); }
+    else if(max_memory != 0.0 && free_memory != 0.0){ return 1.0 - (free_memory / max_memory); }
   }
   return 0.0; 
 }
