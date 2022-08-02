@@ -31,7 +31,7 @@ long int Process::UpTime() { return up_time_; }
 // TODO: Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
 // TODO: Check what to compare
-bool Process::operator<(Process const& a[[maybe_unused]]) const { 
+bool Process::operator<(Process const& a) const { 
     if(Process::pid_ < a.pid_) { return true; }
     else { return false; } 
 }
