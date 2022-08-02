@@ -120,7 +120,7 @@ int LinuxParser::TotalProcesses() {
   std::ifstream stream(kProcDirectory + kStatFilename);
   while (stream.is_open()) {
     std::getline(stream, line);
-    std::istingstream linestream(line);
+    std::istringstream linestream(line);
     linestream >> attribute >> value;
     if(attribute == "processes"){
       return stoi(value);
@@ -135,7 +135,7 @@ int LinuxParser::RunningProcesses() {
   std::ifstream stream(kProcDirectory + kStatFilename);
   while (stream.is_open()) {
     std::getline(stream, line);
-    std::istingstream linestream(line);
+    std::istringstream linestream(line);
     linestream >> attribute >> value;
     if(attribute == "procs_running"){
       return stoi(value);
