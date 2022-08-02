@@ -20,4 +20,4 @@ string Format::ElapsedTime(long seconds[[maybe_unused]]) {
     seconds = seconds - minutes * 60;
     time = Format::ConvertToDoubleDigits(hours) + ";" + Format::ConvertToDoubleDigits(minutes) + ";" + Format::ConvertToDoubleDigits(seconds);
     return time; 
-    }
+}

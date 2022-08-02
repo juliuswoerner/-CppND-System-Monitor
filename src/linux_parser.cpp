@@ -70,28 +70,24 @@ vector<int> LinuxParser::Pids() {
 }
 
 // TODO: Read and return the system memory utilization
-float LinuxParser::MemoryUtilization() { 
-  System system;
-  float memory_utilization;
-  memory_utilization = system.MemoryUtilization();
-  return memory_utilization; 
-}
+float LinuxParser::MemoryUtilization() { return 0; }
 
 // TODO: Read and return the system uptime
-long LinuxParser::UpTime() {
-  System system;
+long LinuxParser::UpTime() { 
   long up_time;
-  up_time = system.UpTime(); 
-  return 0; 
-}
+  string line, start, end;
+  std::ifstream stream(kProcDirectory + kUptimeFilename);
+  if (stream.is_open()) {
+    std::getLine(stream, line);
+    std::istringstream linestream(line);
+    linestream >> start >> end;
+    up_time = stol(end) - stol(start);
+  }
+  return up_time; 
+  }
 
 // TODO: Read and return the number of jiffies for the system
-long LinuxParser::Jiffies() { 
-  System system;
-  long jiffies;
-  
-  return 0; 
-}
+long LinuxParser::Jiffies() { return 0; }
 
 // TODO: Read and return the number of active jiffies for a PID
 // REMOVE: [[maybe_unused]] once you define the function
