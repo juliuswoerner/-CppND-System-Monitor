@@ -127,10 +127,10 @@ vector<string> LinuxParser::CpuUtilization() {
     std::istringstream linestream(line);
     linestream >> cpu[0] >> cpu[1] >> cpu[2] >> cpu[3] >> cpu[4];
     if(cpu[0]=="cpu"){
-      cpu_utilizations.push_back(cpu[4]);
+      cpu_utilizations[0] = cpu[4];
     }
     else if(cpu[0]=="btime"){
-      cpu_utilizations.push_back(cpu[1]);
+      cpu_utilizations[1] = cpu[1];
     }
     else if(cpu_utilizations[0] != "" && cpu_utilizations[1] != ""){
       return cpu_utilizations;
