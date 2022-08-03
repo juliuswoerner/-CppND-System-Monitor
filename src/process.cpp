@@ -14,10 +14,10 @@ using std::vector;
 // TODO: Return this process's ID
 
 Process::Process(int pid){
-    Process::Pid(pid);
+    Process::SetPid(pid);
 }
 
-void Process::Pid(int pid) { Process::pid_ = pid; }
+void Process::SetPid(int pid) { Process::pid_ = pid; }
 
 int Process::Pid() { return pid_; }
 
