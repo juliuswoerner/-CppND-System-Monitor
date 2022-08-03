@@ -209,8 +209,19 @@ string LinuxParser::Uid(int pid) {
 
 // TODO: Read and return the user associated with a process
 // REMOVE: [[maybe_unused]] once you define the function
-string LinuxParser::User(int pid) { return std::to_string(pid); }
+string LinuxParser::User(int pid) { return "dummy"; }
 
 // TODO: Read and return the uptime of a process
 // REMOVE: [[maybe_unused]] once you define the function
-long LinuxParser::UpTime(int pid) { return pid; }
+long LinuxParser::UpTime(int pid) { 
+  long up_time;
+  string line, start, end;
+  std::ifstream stream(kProcDirectory + "/" + std::to_string(pid) + kUptimeFilename);
+  if (stream.is_open()) {
+    std::getline(stream, line);
+    std::istringstream linestream(line);
+    linestream >> start >> end;
+    up_time = stol(end) - stol(start);
+  }
+  return up_time; 
+ }
