@@ -121,7 +121,7 @@ vector<string> LinuxParser::CpuUtilization() {
   vector<string> cpu_utilizations;
   string cpu[11]={"0.1","0.1","0.1","0.1","0.1","0.1","0.1","0.1","0.1","0.1","0.1"};
   string line;
-  std::ifstream stream(kProcDirectory + kCpuinfoFilename);
+  std::ifstream stream(kProcDirectory + kStatFilename);
   while (stream.is_open()) {
     std::getline(stream, line);
     std::istringstream linestream(line);
