@@ -118,7 +118,7 @@ long LinuxParser::IdleJiffies() { return 0; }
 
 // TODO: Read and return CPU utilization
 vector<string> LinuxParser::CpuUtilization() { 
-  vector<string> cpu_utilizations;
+  vector<string> cpu_utilizations = {"0.0","1.0"};
   string cpu[11]={"","","","","","","","","","",""};
   string line;
   std::ifstream stream(kProcDirectory + kStatFilename);
