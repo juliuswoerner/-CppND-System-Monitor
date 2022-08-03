@@ -12,6 +12,13 @@ using std::to_string;
 using std::vector;
 
 // TODO: Return this process's ID
+
+Process::Process(int pid){
+    Process::Pid(pid);
+}
+
+void Process::Pid(int pid) { Process::pid_ = pid; }
+
 int Process::Pid() { return pid_; }
 
 // TODO: Return this process's CPU utilization
