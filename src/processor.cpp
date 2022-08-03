@@ -12,5 +12,6 @@ using std::vector;
 float Processor::Utilization() { 
     vector<string> utilizations = LinuxParser::CpuUtilization();
     string test = utilizations.at(4);
-    return std::stof(utilizations.at(0)); 
+    float test_float = std::stof("123");
+    return test_float; 
 }
