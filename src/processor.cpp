@@ -11,5 +11,6 @@ using std::vector;
 // TODO: Return the aggregate CPU utilization
 float Processor::Utilization() { 
     vector<string> utilizations = LinuxParser::CpuUtilization();
-    return 1 - (std::stof(utilizations[0]) / std::stof(utilizations[1])); 
+    return 0.1;
+    //1 - (std::stof(utilizations[0]) / std::stof(utilizations[1])); 
 }
