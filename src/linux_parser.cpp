@@ -122,12 +122,15 @@ vector<string> LinuxParser::CpuUtilization() {
   string cpu[11];
   string line;
   std::ifstream stream(kProcDirectory + kCpuinfoFilename);
-  if (stream.is_open()) {
+  while (stream.is_open()) {
     std::getline(stream, line);
     std::istringstream linestream(line);
     linestream >> cpu[0] >> cpu[1] >> cpu[2] >> cpu[3] >> cpu[4] >> cpu[5] >> cpu[6] >> cpu[7] >> cpu[8] >> cpu[9] >> cpu[10];
-    for(int i=0; i<11; i++){
-      cpu_utilizations.push_back(cpu[i]);
+    if(cpu[0]=="cpu"){
+      for(int i=0; i<11; i++){
+        cpu_utilizations.push_back(cpu[i]);
+      }
+      return cpu_utilizations;
     }
   }
   return cpu_utilizations; 
