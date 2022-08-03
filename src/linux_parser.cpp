@@ -185,9 +185,10 @@ string LinuxParser::Ram(int pid) {
   while (stream.is_open()) {
     std::getline(stream, line);
     std::istringstream linestream(line);
-    return linestream[17];
+    linestream[17] >> value
+    return value;
   }
-  return 0.0; 
+  return ""; 
   }
 
 // TODO: Read and return the user ID associated with a process
