@@ -22,12 +22,17 @@ Processor& System::Cpu() { return cpu_; }
 vector<Process>& System::Processes() { 
     vector<Process> processes;
     vector<int> pids = LinuxParser::Pids();
-    std::cout << pids.size() << std::endl;
-    for(auto pid : pids){
+    if(pids.size() > 0){
+        for(auto pid : pids){
         Process process(pid);
         processes.push_back(process);
+        }
     }
-    return processes; }
+
+    return processes;
+    
+}
+    
 
 //vector<Process>& System::Processes() {return processes_; }
 
