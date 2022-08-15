@@ -3,6 +3,7 @@
 #include <set>
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include "process.h"
 #include "processor.h"
@@ -21,6 +22,7 @@ Processor& System::Cpu() { return cpu_; }
 vector<Process>& System::Processes() { 
     vector<Process> processes;
     vector<int> pids = LinuxParser::Pids();
+    std::cout << pids.size() << std::endl;
     for(auto pid : pids){
         Process process(pid);
         processes.push_back(process);
