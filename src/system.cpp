@@ -24,10 +24,10 @@ vector<Process>& System::Processes() {
     vector<Process> processes;
     processes.push_back(process1);
     vector<int> pids = LinuxParser::Pids();
-    for(auto pid : pids){
-        Process process(pid);
-        processes.push_back(process);
-    }
+    //for(auto pid : pids){
+    //    Process process(pid);
+    //    processes.push_back(process);
+    //}
     return processes;
 }
     
