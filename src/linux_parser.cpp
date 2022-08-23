@@ -97,8 +97,7 @@ long LinuxParser::UpTime() {
   if (stream.is_open()) {
     std::getline(stream, line);
     std::istringstream linestream(line);
-    linestream >> start >> end;
-    up_time = stol(end) - stol(start);
+    linestream >> up_time;
   }
   return up_time; 
   }
