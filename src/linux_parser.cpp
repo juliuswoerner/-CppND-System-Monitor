@@ -166,7 +166,7 @@ string LinuxParser::Command(int pid) {
 // TODO: Read and return the memory used by a process
 // REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::Ram(int pid) { 
-  string attribute, v[18], line;
+  string attribute, v[23], line;
   std::ifstream stream(kProcDirectory + "/" + std::to_string(pid) + kStatFilename);
   while (stream.is_open()) {
     std::getline(stream, line);
