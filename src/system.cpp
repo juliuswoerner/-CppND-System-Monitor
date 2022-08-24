@@ -25,7 +25,7 @@ vector<Process>& System::Processes() {
     for(auto pid : pids){
         processes_.emplace_back(Process(pid));
     }
-    //std::sort(processes_.rbegin(), processes_.rend());
+    std::sort(processes_.begin(), processes_.end(), Process::operator<);
     return processes_;
 }
     
