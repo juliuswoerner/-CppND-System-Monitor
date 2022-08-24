@@ -178,7 +178,7 @@ string LinuxParser::Ram(int pid) {
     memStr = std::to_string(mem);
     return memStr;
   }
-  
+
   return ""; 
   }
 
@@ -200,7 +200,22 @@ string LinuxParser::Uid(int pid) {
 
 // TODO: Read and return the user associated with a process
 // REMOVE: [[maybe_unused]] once you define the function
-string LinuxParser::User(int pid) { return "dummy"; }
+string LinuxParser::User(int pid) { 
+  string name, temp, x, id;
+  string uid = Uid(pid);
+  std::ifstream stream(kPasswordPath);
+  while (std::getline(stream, line)) {
+    std::replace(line.begin(), line.end(), ':', ' ');
+    std::istringstream linestream(line);
+
+    linestream >> temp >> x >> id;
+    if(id == uid) {
+      name = temp;
+      return name;
+    }
+  }
+  return "dummy"; 
+  }
 
 // TODO: Read and return the uptime of a process
 // REMOVE: [[maybe_unused]] once you define the function
