@@ -182,7 +182,7 @@ string LinuxParser::Ram(int pid) {
       linestream >> memStr;
       mem = stoi(memStr)/1024;
       memStr = std::to_string(mem);
-      return 
+      return memStr;
     }
   }
   return ""; 
