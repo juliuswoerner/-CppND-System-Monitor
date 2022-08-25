@@ -168,17 +168,14 @@ string LinuxParser::Command(int pid) {
 // REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::Ram(int pid) { 
   string attribute, v[23], line, key, memStr;
-  int mem;
+  long mem;
   std::ifstream stream(kProcDirectory + "/" + std::to_string(pid) + kStatFilename);
   while (stream.is_open()) {
     std::getline(stream, line);
     std::istringstream linestream(line);
     linestream >> v[0] >> v[1] >> v[2] >> v[3] >> v[4] >> v[5] >> v[6] >> v[7] >> v[8] >> v[9] >> v[10] >> v[11] >> v[12] >> v[13] >> v[14] >> v[15] >> v[16] >> v[17] >> v[18] >> v[19] >> v[20] >> v[21] >> v[22] ;
     memStr = v[22];
-    std::cout << "check 5" << std::endl;
-    std::cout << "memStr: " << memStr << std::endl;
     mem = stol(memStr)/1024;
-    std::cout << "check 6" << std::endl;
     memStr = std::to_string(mem);
     return memStr;
   }
