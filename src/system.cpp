@@ -30,7 +30,7 @@ vector<Process>& System::Processes() {
         }
         processes_.emplace_back(pid);
     }
-    //std::sort(processes_.begin(), processes_.end());
+    std::sort(processes_.begin(), processes_.end());
     return processes_;
 }
     
