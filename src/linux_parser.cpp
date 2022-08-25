@@ -169,16 +169,21 @@ string LinuxParser::Command(int pid) {
 string LinuxParser::Ram(int pid) { 
   string attribute, v[23], line, key, memStr;
   int mem;
-  std::cout << "check before" << std::endl;
   std::ifstream stream(kProcDirectory + "/" + std::to_string(pid) + kStatFilename);
-  std::cout << "check after" << std::endl;
   while (stream.is_open()) {
+    std::cout << "check 1" << std::endl;
     std::getline(stream, line);
+    std::cout << "check 2" << std::endl;
     std::istringstream linestream(line);
+    std::cout << "check 2" << std::endl;
     linestream >> v[0] >> v[1] >> v[2] >> v[3] >> v[4] >> v[5] >> v[6] >> v[7] >> v[8] >> v[9] >> v[10] >> v[11] >> v[12] >> v[13] >> v[14] >> v[15] >> v[16] >> v[17] >> v[18] >> v[19] >> v[20] >> v[21] >> v[22] ;
+    std::cout << "check 2" << std::endl;
     memStr = v[22];
+    std::cout << "check 2" << std::endl;
     mem = stoi(memStr)/1024;
+    std::cout << "check 2" << std::endl;
     memStr = std::to_string(mem);
+    std::cout << "check 2" << std::endl;
     return memStr;
   }
 
