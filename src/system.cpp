@@ -26,7 +26,7 @@ vector<Process>& System::Processes() {
         if(LinuxParser::Ram(pid) != "0"){
             std::cout << "pid:" << pid << std::endl; 
             std::cout << "ram:" << LinuxParser::Ram(pid) << std::endl;
-            processes_.emplace_back(pid);
+            //processes_.emplace_back(pid);
         }
         //processes_.emplace_back(pid);
     }
