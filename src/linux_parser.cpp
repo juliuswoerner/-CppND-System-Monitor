@@ -177,7 +177,7 @@ string LinuxParser::Ram(int pid) {
     memStr = v[22];
     std::cout << "check 5" << std::endl;
     std::cout << "memStr: " << memStr << std::endl;
-    mem = stoi(memStr)/1024;
+    mem = stol(memStr)/1024;
     std::cout << "check 6" << std::endl;
     memStr = std::to_string(mem);
     return memStr;
