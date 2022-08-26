@@ -14,7 +14,7 @@ float Processor::Utilization() {
     return std::stof(utilizations[0]) / (std::stof(utilizations[0]) + std::stof(utilizations[3])); 
 }
 
-float Processor:Hertz() {
+float Processor::Hertz() {
     float Hertz;
     std::ifstream stream("/proc" + "/" + "cpuinfo");
     while (stream.is_open()) {

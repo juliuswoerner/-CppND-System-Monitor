@@ -169,7 +169,7 @@ string LinuxParser::Command(int pid) {
 float LinuxParser::CpuUtilization(int pid) { 
   float total_time, utime, stime, cutime, cstime, starttime, cpu_usage;
   long uptime, seconds, Hertz;
-  Hertz = CLK_TCK;
+  Hertz = Processor::Hertz();
   string v[23], line;
   std::ifstream stream(kProcDirectory + "/" + std::to_string(pid) + kStatFilename);
   while (stream.is_open()) {
