@@ -14,6 +14,21 @@ using std::string;
 using std::to_string;
 using std::vector;
 
+float LinuxParser::Hertz() {
+    float Hertz;
+    std::ifstream stream("/proc" + "/" + "cpuinfo");
+    while (stream.is_open()) {
+        std::getline(stream, line);
+        std::istringstream linestream(line);
+        linestream >> attribute >> value;
+        if(attribute == "cpu MHz"){
+         Hertz = stof(value);
+         return 1000000 * Hertz;
+        }
+    }
+    return 0.0;
+}
+
 // DONE: An example of how to read data from the filesystem
 string LinuxParser::OperatingSystem() {
   string line;
@@ -168,8 +183,8 @@ string LinuxParser::Command(int pid) {
 
 float LinuxParser::CpuUtilization(int pid) { 
   float total_time, utime, stime, cutime, cstime, starttime, cpu_usage;
-  long uptime, seconds, Hertz;
-  Hertz = Processor::Hertz();
+  long uptime, seconds;
+  float Hertz = LinuxParser::Hertz();
   string v[23], line;
   std::ifstream stream(kProcDirectory + "/" + std::to_string(pid) + kStatFilename);
   while (stream.is_open()) {
