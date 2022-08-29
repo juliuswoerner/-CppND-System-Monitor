@@ -61,11 +61,11 @@ float Process::CpuUtilization() {
         total_time = utime + stime + cutime + cstime;
         std::cout << "totaltime:" << total_time << std::endl;
         uptime = UpTime();
-        std::cout << "upTime:" << uptime << std::endl;
+        //std::cout << "upTime:" << uptime << std::endl;
         seconds = uptime - (starttime / hertz_);
-        std::cout << "Seconds:" << seconds << std::endl;
+        //std::cout << "Seconds:" << seconds << std::endl;
         cpu_usage = ((total_time / hertz_) / seconds);
-        std::cout << "CpuUsage:" << cpu_usage << std::endl;
+        //std::cout << "CpuUsage:" << cpu_usage << std::endl;
         return cpu_usage;
     }
     return 0.0; 
