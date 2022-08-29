@@ -37,8 +37,7 @@ void Process::Hertz() {
         // std::cout << "value:" << value << std::endl;
         if(attribute1 == "cpu" && attribute2 == "MHz"){
             hertz_ = 1000000 * stof(value);
-            float fvalue = stof(value);
-            std::cout >> to_string(fvalue) >> std::endl;
+            std::cout >> value >> std::endl;
             //std::cout << "successfull break" << std::endl;
             break;
         }
