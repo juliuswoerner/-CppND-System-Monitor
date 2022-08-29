@@ -24,17 +24,18 @@ void Process::SetPid(int pid) { Process::pid_ = pid; }
 int Process::Pid() { return pid_; }
 
 void Process::Hertz() {
-    string line, attribute1, attribute2, value;
+    string line, attribute1, attribute2, attribute3, value;
     int count = 0;
     std::ifstream stream("/proc/cpuinfo");
     while (stream.is_open()) {
         std::getline(stream, line);
         std::istringstream linestream(line);
-        linestream >> attribute1 >> attribute2 >> value;
+        linestream >> attribute1 >> attribute2 >> attribute3 >> value;
         std::cout << "attribute1:" << attribute1 << std::endl;
         std::cout << "attribute2:" << attribute2 << std::endl;
+        std::cout << "attribute3:" << attribute3 << std::endl;
         std::cout << "value:" << value << std::endl;
-        if(attribute1 == "cpu:"){
+        if(attribute1 == "cpu"){
             hertz_ = 1000000 * stof(value);
             std::cout << "successfull break" << std::endl;
             break;
