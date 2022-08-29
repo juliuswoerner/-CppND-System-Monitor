@@ -31,16 +31,17 @@ void Process::Hertz() {
         std::getline(stream, line);
         std::istringstream linestream(line);
         linestream >> attribute >> value;
-        if(attribute == "cpu MHz:"){
+        std::cout << attribute << std::endl;
+        if(attribute == "cpu MHz"){
             hertz_ = 1000000 * stof(value);
             std::cout << "successfull break" << std::endl;
             break;
         }
         count += 1;
-        if(count>10){ 
-            std::cout << "unsuccessfull break" << std::endl;
-            break; 
-            }
+        //if(count>10){ 
+        //    std::cout << "unsuccessfull break" << std::endl;
+        //    break; 
+        //    }
     }
 }
 
