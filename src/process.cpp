@@ -32,7 +32,7 @@ void Process::Hertz() {
         std::istringstream linestream(line);
         linestream >> attribute1 >> attribute2 >> attribute3 >> value;
         if(attribute1 == "cpu" && attribute2 == "MHz"){
-            hertz_ = 1000000 * stof(value);
+            hertz_ = stof(value);
             break;
         }
         count += 1;
