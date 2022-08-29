@@ -10,6 +10,7 @@
 using std::string;
 using std::to_string;
 using std::vector;
+using std::stof;
 
 // TODO: Return this process's ID
 
@@ -22,7 +23,8 @@ void Process::SetPid(int pid) { Process::pid_ = pid; }
 int Process::Pid() { return pid_; }
 
 void Process::Hertz() {
-    std::ifstream stream("/proc" + "/" + "cpuinfo");
+    string line, attribute, value;
+    std::ifstream stream("/proc/cpuinfo");
     while (stream.is_open()) {
         std::getline(stream, line);
         std::istringstream linestream(line);
@@ -37,7 +39,7 @@ void Process::Hertz() {
 float Process::CpuUtilization() {
     float total_time, utime, stime, cutime, cstime, starttime, cpu_usage;
     long uptime, seconds;
-    Process:Hertz();
+    Process::Hertz();
     string v[23], line;
     std::ifstream stream("/proc/" + std::to_string(pid_) + "/stat");
     while (stream.is_open()) {
