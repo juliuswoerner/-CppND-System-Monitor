@@ -16,7 +16,7 @@ class Process {
   long int UpTime();                       // TODO: See src/process.cpp
   bool operator<(Process const& a) const;  // TODO: See src/process.cpp
   void SetPid(int pid);
-  int Hertz();
+  void Hertz();
   Process(int pid);
 
   // TODO: Declare any necessary private members

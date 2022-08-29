@@ -22,9 +22,9 @@ void Process::SetPid(int pid) { Process::pid_ = pid; }
 
 int Process::Pid() { return pid_; }
 
-int Process::Hertz() {
+void Process::Hertz() {
     string line, attribute, value;
-    int count;
+    int count = 0;
     std::ifstream stream("/proc/cpuinfo");
     while (stream.is_open()) {
         std::getline(stream, line);
@@ -32,11 +32,11 @@ int Process::Hertz() {
         linestream >> attribute >> value;
         if(attribute == "cpu MHz"){
             hertz_ = 1000000 * stof(value);
-            return 0;
+            break;
         }
         count += 1;
+        if(count>10){ break; }
     }
-    return 0;
 }
 
 // TODO: Return this process's CPU utilization
