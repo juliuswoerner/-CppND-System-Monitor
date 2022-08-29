@@ -60,6 +60,7 @@ float Process::CpuUtilization() {
         starttime = stof(v[21]);
         total_time = utime + stime + cutime + cstime;
         uptime = UpTime();
+        if(uptime < 0) {utime = abs(utime);}
         seconds = uptime - (starttime / hertz_);
         cpu_usage = ((total_time / hertz_) / seconds);
         return cpu_usage;
