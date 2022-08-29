@@ -37,12 +37,13 @@ void Process::Hertz() {
         // std::cout << "value:" << value << std::endl;
         if(attribute1 == "cpu" && attribute2 == "MHz"){
             hertz_ = 1000000 * stof(value);
-            std::cout << "successfull break" << std::endl;
+            std::cout >> hertz_ >> std::endl;
+            //std::cout << "successfull break" << std::endl;
             break;
         }
         count += 1;
         if(count>40){ 
-           std::cout << "unsuccessfull break" << std::endl;
+           //std::cout << "unsuccessfull break" << std::endl;
            break; 
            }
     }
