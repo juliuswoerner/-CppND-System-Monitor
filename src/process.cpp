@@ -21,10 +21,65 @@ void Process::SetPid(int pid) { Process::pid_ = pid; }
 
 int Process::Pid() { return pid_; }
 
+void Process::Hertz() {
+    std::ifstream stream("/proc" + "/" + "cpuinfo");
+    while (stream.is_open()) {
+        std::getline(stream, line);
+        std::istringstream linestream(line);
+        linestream >> attribute >> value;
+        if(attribute == "cpu MHz"){
+            hertz_ = 1000000 * stof(value);
+        }
+    }
+}
+
 // TODO: Return this process's CPU utilization
 float Process::CpuUtilization() {
-    vector<string> utilizations = LinuxParser::CpuUtilization();
-    return std::stof(utilizations[0]) / (std::stof(utilizations[0]) + std::stof(utilizations[3])); 
+    float total_time, utime, stime, cutime, cstime, starttime, cpu_usage;
+    long uptime, seconds;
+    Process:Hertz();
+    string v[23], line;
+    std::ifstream stream("/proc/" + std::to_string(pid_) + "/stat");
+    while (stream.is_open()) {
+        std::getline(stream, line);
+        std::istringstream linestream(line);
+        linestream >> v[0] >> v[1] >> v[2] >> v[3] >> v[4] >> v[5] >> v[6] >> v[7] >> v[8] >> v[9] >> v[10] >> v[11] >> v[12] >> v[13] >> v[14] >> v[15] >> v[16] >> v[17] >> v[18] >> v[19] >> v[20] >> v[21] >> v[22] ;
+        utime = stof(v[13]);
+        stime = stof(v[14]);
+        cutime = stof(v[15]);
+        cstime = stof(v[16]);
+        starttime = stof(v[21]);
+        total_time = utime + stime + cutime + cstime;
+        uptime = UpTime();
+        seconds = uptime = (starttime / hertz_);
+        cpu_usage = ((total_time / hertz_) / seconds);
+        return cpu_usage;
+    }
+    return 0.0; 
+}
+
+float LinuxParser::CpuUtilization(int pid) { 
+  float total_time, utime, stime, cutime, cstime, starttime, cpu_usage;
+  long uptime, seconds;
+  float Hertz = LinuxParser::Hertz();
+  string v[23], line;
+  std::ifstream stream(kProcDirectory + "/" + std::to_string(pid) + kStatFilename);
+  while (stream.is_open()) {
+    std::getline(stream, line);
+    std::istringstream linestream(line);
+    linestream >> v[0] >> v[1] >> v[2] >> v[3] >> v[4] >> v[5] >> v[6] >> v[7] >> v[8] >> v[9] >> v[10] >> v[11] >> v[12] >> v[13] >> v[14] >> v[15] >> v[16] >> v[17] >> v[18] >> v[19] >> v[20] >> v[21] >> v[22] ;
+    utime = stof(v[13]);
+    stime = stof(v[14]);
+    cutime = stof(v[15]);
+    cstime = stof(v[16]);
+    starttime = stof(v[21]);
+    total_time = utime + stime + cutime + cstime;
+    uptime = UpTime();
+    seconds = uptime = (starttime / Hertz);
+    cpu_usage = ((total_time / Hertz) / seconds);
+    return cpu_usage;
+  }
+  return 0.0; 
 }
 
 // TODO: Return the command that generated this process
