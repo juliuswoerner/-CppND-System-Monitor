@@ -35,10 +35,6 @@ void Process::Hertz() {
             hertz_ = stof(value);
             break;
         }
-        count += 1;
-        if(count>40){ 
-           break; 
-           }
     }
 }
 
@@ -59,13 +55,9 @@ float Process::CpuUtilization() {
         cstime = stof(v[16]);
         starttime = stof(v[21]);
         total_time = utime + stime + cutime + cstime;
-        //std::cout << "totaltime:" << total_time << std::endl;
         uptime = UpTime();
-        //std::cout << "upTime:" << uptime << std::endl;
         seconds = uptime - (starttime / hertz_);
-        std::cout << "Seconds:" << seconds << std::endl;
         cpu_usage = ((total_time / hertz_) / seconds);
-        //std::cout << "CpuUsage:" << cpu_usage << std::endl;
         return cpu_usage;
     }
     return 0.0; 

@@ -12,7 +12,7 @@ string Format::ConvertToDoubleDigits(int number){
 // INPUT: Long int measuring seconds
 // OUTPUT: HH:MM:SS
 // REMOVE: [[maybe_unused]] once you define the function
-string Format::ElapsedTime(long seconds[[maybe_unused]]) { 
+string Format::ElapsedTime(long seconds) { 
     string time = "";
     int hours = seconds / 3600;
     seconds = seconds - hours * 3600;
