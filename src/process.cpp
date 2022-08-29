@@ -31,19 +31,12 @@ void Process::Hertz() {
         std::getline(stream, line);
         std::istringstream linestream(line);
         linestream >> attribute1 >> attribute2 >> attribute3 >> value;
-        // std::cout << "attribute1:" << attribute1 << std::endl;
-        // std::cout << "attribute2:" << attribute2 << std::endl;
-        // std::cout << "attribute3:" << attribute3 << std::endl;
-        // std::cout << "value:" << value << std::endl;
         if(attribute1 == "cpu" && attribute2 == "MHz"){
             hertz_ = 1000000 * stof(value);
-            std::cout << to_string(hertz_) << std::endl;
-            //std::cout << "successfull break" << std::endl;
             break;
         }
         count += 1;
         if(count>40){ 
-           //std::cout << "unsuccessfull break" << std::endl;
            break; 
            }
     }
@@ -67,7 +60,7 @@ float Process::CpuUtilization() {
         starttime = stof(v[21]);
         total_time = utime + stime + cutime + cstime;
         uptime = UpTime();
-        seconds = uptime = (starttime / hertz_);
+        seconds = uptime - (starttime / hertz_);
         cpu_usage = ((total_time / hertz_) / seconds);
         return cpu_usage;
     }
