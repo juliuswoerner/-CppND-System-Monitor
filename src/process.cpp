@@ -24,6 +24,7 @@ int Process::Pid() { return pid_; }
 
 int Process::Hertz() {
     string line, attribute, value;
+    int count;
     std::ifstream stream("/proc/cpuinfo");
     while (stream.is_open()) {
         std::getline(stream, line);
@@ -33,6 +34,7 @@ int Process::Hertz() {
             hertz_ = 1000000 * stof(value);
             return 0;
         }
+        count += 1;
     }
     return 0;
 }

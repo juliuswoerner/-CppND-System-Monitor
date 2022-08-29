@@ -23,7 +23,7 @@ class Process {
  private:
     int pid_;
     std::string user_;
-    float hertz_;
+    float hertz_{1.0};
 };
 
 #endif
