@@ -25,7 +25,6 @@ int Process::Pid() { return pid_; }
 
 void Process::Hertz() {
     string line, attribute1, attribute2, attribute3, value;
-    int count = 0;
     std::ifstream stream("/proc/cpuinfo");
     while (stream.is_open()) {
         std::getline(stream, line);
