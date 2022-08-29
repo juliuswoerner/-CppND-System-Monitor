@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include "process.h"
 #include "linux_parser.h"
@@ -32,10 +33,14 @@ void Process::Hertz() {
         linestream >> attribute >> value;
         if(attribute == "cpu MHz"){
             hertz_ = 1000000 * stof(value);
+            std::cout << "successfull break" << std::endl;
             break;
         }
         count += 1;
-        if(count>10){ break; }
+        if(count>10){ 
+            std::cout << "unsuccessfull break" << std::endl;
+            break; 
+            }
     }
 }
 
